@@ -4,7 +4,13 @@ import java.util.*;
 public class StudentList {
 	public static void main(String[] args) {
 
-//		Check arguments
+		if(args.length!=1){
+			System.err.println("Invalid number of arguments.");
+			System.err.println("Exiting program");
+			System.exit(1);
+
+		}
+		// check arguments
 		if(args[0].equals("a")) {
 			System.out.println("Loading data ...");			
 			try {
@@ -57,7 +63,7 @@ public class StudentList {
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
-			String i[] = r.split(",");	
+			String i[] = r.split(", ");	
 			boolean done = false;
 			String t = args[0].substring(1);
 			for(int idx = 0; idx<i.length && !done; idx++) {
@@ -93,6 +99,11 @@ public class StudentList {
 			System.out.println(count +" word(s) found ");
 			} catch (Exception e){} 
 			System.out.println("Data Loaded.");				
-		}
 	}
+	else{
+		System.err.println("Invalid arguments.");
+		System.err.println("Exiting program.");
+		System.exit(2);
+	}
+
 }
